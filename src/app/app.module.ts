@@ -37,19 +37,20 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
-import { CustomerComponent } from './customer/customer.component';
-import { LoanComponent } from './loan/loan.component';
+import { BookPageComponent } from './book/book-page.component';
+import { CustomerPageComponent } from './customer/customer-page.component';
+import { LoanPageComponent } from './loan/loan-page.component';
 import { MenuComponent } from './menu/menu/menu.component';
 import { BackToMenuComponent } from './menu/back-to-menu/back-to-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
-    CustomerComponent,
-    LoanComponent,
+    BookPageComponent,
+    CustomerPageComponent,
+    LoanPageComponent,
     MenuComponent,
     BackToMenuComponent
   ],
@@ -89,7 +90,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
