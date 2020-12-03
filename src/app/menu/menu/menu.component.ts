@@ -8,21 +8,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit(): void {
+  title = 'Library Administration';
+    
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
   }
 
+  ngOnInit() {
+  }
+  
   gotoBookPage(){
-    this.router.navigateByUrl('/book-page');
-}
-
-gotoCustomerPage(){
-    this.router.navigateByUrl('/customer-page');
-}
-
-gotoLoanPage(){
-    this.router.navigateByUrl('/loan-page');
-}
+      this.router.navigateByUrl('/book-page');
+  }
+  
+  gotoCustomerPage(){
+      this.router.navigateByUrl('/customer-page');
+  }
+  
+  gotoLoanPage(){
+      this.router.navigateByUrl('/loan-page');
+  }
 
 }

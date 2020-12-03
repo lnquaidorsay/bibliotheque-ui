@@ -24,7 +24,7 @@ export class BookPageComponent implements OnInit {
   public messageModal: string;
   public displayMessageModal: boolean = false;
   
-  public categories: Category[] = [{code:"", label:""}];
+  public categories: Category[] = [{code:"C", label:"Cuisine"},{code:"A", label:"Art musique et cinéma"},{code:"J", label:"Jeunesse"}];
   public book = new Book();
   public searchBooksResult: Book[] = [];
   
@@ -97,12 +97,14 @@ saveNewBook(book: Book){
     this.spinner.show();
     this.bookService.saveBook(book).subscribe(
             (result: Book) => {
+                console.log("Resultat du livre : ",result);
                if(result.id){
                   this.spinner.hide();
                   this.buildMessageModal('Save operation correctly done');
                }
             },
             error => {
+                console.log("erreur survenue lors de  ajout : ",error);
                 this.spinner.hide();
                 this.buildMessageModal('An error occurs when saving the book data');
             }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from '../models/customer';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class CustomerService {
    * @param book
    */
    saveCustomer(customer: Customer): Observable<Customer>{
-       return this.http.post<Customer>('/library/rest/customer/api/addCustomer', customer);
+       return this.http.post<Customer>(environment.apiUrl+'/rest/customer/api/addCustomer', customer);
    }
    
    /**
@@ -23,7 +24,7 @@ export class CustomerService {
     * @param customer
     */
     updateCustomer(customer: Customer): Observable<Customer>{
-        return this.http.put<Customer>('/library/rest/customer/api/updateCustomer', customer);
+        return this.http.put<Customer>(environment.apiUrl+'/rest/customer/api/updateCustomer', customer);
     }
     
     /**
@@ -31,7 +32,7 @@ export class CustomerService {
      * @param customer
      */
      deleteCustomer(customer: Customer): Observable<string>{
-         return this.http.delete<string>('/library/rest/customer/api/deleteCustomer/'+customer.id);
+         return this.http.delete<string>(environment.apiUrl+'/rest/customer/api/deleteCustomer/'+customer.id);
      }
    
    /**
@@ -39,7 +40,7 @@ export class CustomerService {
     * @param email
     */
    searchCustomerByEmail(email: string): Observable<Customer>{
-       return  this.http.get<Customer>('/library/rest/customer/api/searchByEmail?email='+email);
+       return  this.http.get<Customer>(environment.apiUrl+'/rest/customer/api/searchByEmail?email='+email);
    }
    
   /**
@@ -48,6 +49,6 @@ export class CustomerService {
    * @param endPage, 
    */
    searchCustomerByLastName(lastName: string): Observable<Customer[]>{
-           return this.http.get<Customer[]>('/library/rest/customer/api/searchByLastName?lastName='+lastName);
+           return this.http.get<Customer[]>(environment.apiUrl+'/rest/customer/api/searchByLastName?lastName='+lastName);
    }
 }

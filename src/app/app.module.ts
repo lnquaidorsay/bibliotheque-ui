@@ -44,6 +44,7 @@ import { MenuComponent } from './menu/menu/menu.component';
 import { BackToMenuComponent } from './menu/back-to-menu/back-to-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSortModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

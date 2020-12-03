@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Book } from '../models/book';
 import { Category } from '../models/category';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class BookService {
          let headers = new HttpHeaders();
          headers.append('content-type', 'application/json');
          headers.append('accept', 'application/json');
-         return this.http.get<Category[]>('/library/rest/category/api/allCategories', {headers: headers});
+         return this.http.get<Category[]>(environment.apiUrl+'/rest/category/api/allCategories', {headers: headers});
      }
      
     /**
@@ -26,7 +27,7 @@ export class BookService {
      * @param book
      */
      saveBook(book: Book): Observable<Book>{
-         return this.http.post<Book>('/library/rest/book/api/addBook', book);
+         return this.http.post<Book>(environment.apiUrl+'/rest/book/api/addBook', book);
      }
      
      /**
@@ -34,7 +35,7 @@ export class BookService {
       * @param book
       */
       updateBook(book: Book): Observable<Book>{
-          return this.http.put<Book>('/library/rest/book/api/updateBook', book);
+          return this.http.put<Book>(environment.apiUrl+'/rest/book/api/updateBook', book);
       }
       
       /**
@@ -42,7 +43,7 @@ export class BookService {
        * @param book
        */
        deleteBook(book: Book): Observable<string>{
-           return this.http.delete<string>('/library/rest/book/api/deleteBook/'+book.id);
+           return this.http.delete<string>(environment.apiUrl+'/rest/book/api/deleteBook/'+book.id);
        }
      
      /**
@@ -50,7 +51,7 @@ export class BookService {
       * @param isbn
       */
      searchBookByIsbn(isbn: string): Observable<Book>{
-         return  this.http.get<Book>('/library/rest/book/api/searchByIsbn?isbn='+isbn);
+         return  this.http.get<Book>(environment.apiUrl+'/rest/book/api/searchByIsbn?isbn='+isbn);
      }
      
     /**
@@ -58,6 +59,6 @@ export class BookService {
      * @param title
      */
      searchBookByTitle(title: string): Observable<Book[]>{
-             return this.http.get<Book[]>('/library/rest/book/api/searchByTitle?title='+title);
+             return this.http.get<Book[]>(environment.apiUrl+'/rest/book/api/searchByTitle?title='+title);
      }
 }

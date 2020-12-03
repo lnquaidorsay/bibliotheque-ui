@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Loan } from '../models/loan';
 import { Mail } from '../models/mail';
 import { SimpleLoan } from '../models/simple-loan';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class LoanService {
      * @param book
      */
     saveLoan(simpleLoan: SimpleLoan): Observable<Loan>{
-         return this.http.post<Loan>('/library/rest/loan/api/addLoan', simpleLoan);
+         return this.http.post<Loan>(environment.apiUrl+'/rest/loan/api/addLoan', simpleLoan);
      }
        
       /**
@@ -25,7 +26,7 @@ export class LoanService {
        * @param loan
        */
       closeLoan(simpleLoan: SimpleLoan): Observable<Boolean>{
-           return this.http.post<Boolean>('/library/rest/loan/api/closeLoan', simpleLoan);
+           return this.http.post<Boolean>(environment.apiUrl+'/rest/loan/api/closeLoan', simpleLoan);
        }
      
      /**
@@ -33,7 +34,7 @@ export class LoanService {
       * @param email
       */
      searchLoansByEmail(email: string): Observable<Loan[]>{
-         return  this.http.get<Loan[]>('/library/rest/loan/api/customerLoans?email='+email);
+         return  this.http.get<Loan[]>(environment.apiUrl+'/rest/loan/api/customerLoans?email='+email);
      }
 
      /**
@@ -44,7 +45,7 @@ export class LoanService {
        let month : string = maxDate.getMonth() < 10 ? '0'+(maxDate.getMonth()+1): ''+(maxDate.getMonth()+1);
        let dayOfMonth : string = maxDate.getDate() < 10 ? '0'+maxDate.getDate(): ''+maxDate.getDate();
        let maxDateStr : string = maxDate.getFullYear() + '-' + month + '-' + dayOfMonth;
-      return  this.http.get<Loan[]>('/library/rest/loan/api/maxEndDate?date='+maxDateStr);
+      return  this.http.get<Loan[]>(environment.apiUrl+'/rest/loan/api/maxEndDate?date='+maxDateStr);
   }
      
     /**
@@ -54,6 +55,6 @@ export class LoanService {
     sendEmail(mail: Mail): Observable<boolean>{
       //let headers = new HttpHeaders();
       //headers.append('responseType', 'arraybuffer'); , {headers: headers}
-      return this.http.put<boolean>('/library/rest/customer/api/sendEmailToCustomer', mail);
+      return this.http.put<boolean>(environment.apiUrl+'/rest/customer/api/sendEmailToCustomer', mail);
     }
 }

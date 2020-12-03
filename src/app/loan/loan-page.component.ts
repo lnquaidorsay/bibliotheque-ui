@@ -11,6 +11,7 @@ import { BookService } from '../services/book.service';
 import { CustomerService } from '../services/customer.service';
 import { LoanService } from '../services/loan.service';
 
+
 @Component({
   selector: 'app-loan',
   templateUrl: './loan-page.component.html',
